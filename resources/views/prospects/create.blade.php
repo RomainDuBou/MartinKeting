@@ -58,9 +58,9 @@
                     </div>
 
                     <div>
-                        <label for="date" class="formbold-form-label"><strong>Date de naissance :</strong></label>
-                        <input type="date" name="date" id="date" class="formbold-form-input"
-                            value="{{ old('date') }}">
+                        <label for="date_naissance" class="formbold-form-label"><strong>Date de naissance :</strong></label>
+                        <input type="date" name="date_naissance" id="date_naissance" class="formbold-form-input"
+                            value="{{ old('date_naissance') }}">
                         @if ($errors->has('date_naissance'))
                             <p>{{ $errors->first('besoin') }}</p>
                         @endif

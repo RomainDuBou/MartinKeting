@@ -37,7 +37,7 @@ class ProspectController extends Controller
     
         $prospect = Prospect::create($validated);
     
-        return view('prospect.confirmation', [
+        return view('prospects.confirmation', [
             'nom' => $validated['nom'],
             'prenom' => $validated['prenom'],
             'email' => $validated['email'],
