@@ -13,13 +13,18 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        return view('prospects.create');
     }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create(Request $request)
+    {
+              return view('prospects.create');
+
+    }
+  
+    public function store(Request $request)
     {
         $validated = $request->validate([
             'nom' => 'required|string|min:2|max:50',
@@ -40,14 +45,6 @@ class ProspectController extends Controller
             'date_naissance' => $validated['date_naissance'],
             'besoin' => $validated['besoin'],
         ]);
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
     }
 
     /**

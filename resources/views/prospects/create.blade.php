@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact')
-
-@section('nav')
+@section('title', 'Prospect')
 
 @section('content')
     <div class="formbold-main-wrapper">
@@ -33,7 +31,7 @@
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"><strong>Email du prospect :</strong></label>
-                        <input type="email" name="nom" id="nom" class="formbold-form-input"
+                        <input type="email" name="email" id="email" class="formbold-form-input"
                             value="{{ old('email') }}">
                         @if ($errors->has('email'))
                             <p>{{ $errors->first('email') }}</p>
@@ -50,11 +48,10 @@
                 </div>
                 <div class="formbold-input-flex">
                     <div>
-                        <label for="besoin" class="formbold-form-label"><strong>Besoin cliant:</strong></label>
+                        <label for="besoin" class="formbold-form-label"><strong>Besoin du client:</strong></label>
                         <textarea id="besoin" name="besoin" rows="6" placeholder="Type your message" class="formbold-form-input">
                             {{ old('besoin') }}
                         </textarea>
-                        value="{{ old('besoin') }}">
                         @if ($errors->has('besoin'))
                             <p>{{ $errors->first('besoin') }}</p>
                         @endif
