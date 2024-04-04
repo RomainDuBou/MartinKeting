@@ -8,15 +8,12 @@
 </head>
 
 <body>
-      <nav>
-        <div class="navbar">
-          <div class="logo"><a href="#">Blogs</a></div>
-          <ul class="menu">
-            <li><a href="{{route('prospects.create')}}">Créer un nouveau prospect</a></li>
-            {{-- <li><a href="{{route('blog.store')}}">Voir les posts</a></li> --}}
-          </ul>
-        </div>
-      </nav>
+  <nav class="navMenu">
+    <a href="{{route('prospects.index')}}">Prospects</a>
+    <a href="#">Clients</a>
+    <a href="#">Ventes</a>
+    <div class="dot"></div>
+  </nav>
     
 @yield('content')
 </body>

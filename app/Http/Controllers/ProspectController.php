@@ -13,6 +13,11 @@ class ProspectController extends Controller
      */
     public function index()
     {
+            $prospects = Prospect::all()->sortByDesc('created_at');
+    
+            return view('prospects.index', [
+                'prospects' => $prospects,
+            ]); 
     }
 
     /**

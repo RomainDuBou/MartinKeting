@@ -5,8 +5,8 @@
 @section('content')
     <div class="confirmationContainer">
 
-        <h1>Le prospect <em>{{ $nom }} {{ $prenom }} a bien été enregistré</em></h1>
-        <h4>Récapitulatif des informations :</h4>
+        <h1>Le prospect <em>{{ $nom }} {{ $prenom }}</em> a bien été enregistré 🎉</h1>
+        <h4><u>Récapitulatif des informations :</u></h4>
         <ul>
             <li><strong>Email : </strong>{{ $email}}</li>
             <li><strong>Téléphone : </strong>{{ $telephone}}</li>
