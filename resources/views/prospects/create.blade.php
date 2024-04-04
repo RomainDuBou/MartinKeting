@@ -7,7 +7,7 @@
 @section('content')
     <div class="formbold-main-wrapper">
         <div class="formbold-form-wrapper">
-            <form action="{{ route('prospect.store') }}" method="POST">
+            <form action="{{ route('prospects.store') }}" method="POST">
                 @csrf
                 <div class="thirteen">
                     <h1>Ajouter un prospect</h1>
