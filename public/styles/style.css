@@ -14,6 +14,7 @@ body {
 .navMenu {
   position: fixed;
   top: 0;
+  left: 0;
   width: 100%;
   background-color: #fff;
   height: 90px;
@@ -37,42 +38,9 @@ body {
 }
 
 .navMenu a:hover {
-  color: #fddb3a;
+  color: #6A64F1;
 }
 
-
-
-.navMenu a:nth-child(1):hover ~ .dot {
-  -webkit-transform: translateX(30px);
-  transform: translateX(30px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
-}
-
-.navMenu a:nth-child(2):hover ~ .dot {
-  -webkit-transform: translateX(110px);
-  transform: translateX(110px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
-}
-
-.navMenu a:nth-child(3):hover ~ .dot {
-  -webkit-transform: translateX(200px);
-  transform: translateX(200px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
-}
-
-.navMenu a:nth-child(4):hover ~ .dot {
-  -webkit-transform: translateX(285px);
-  transform: translateX(285px);
-  -webkit-transition: all 0.2s ease-in-out;
-  transition: all 0.2s ease-in-out;
-  opacity: 1;
-}
 
 /******************************* FORM PROSPECT  ****************************************/
 
@@ -107,6 +75,7 @@ form h1 {
   display: flex;
   flex-direction: column-reverse;
 }
+
 .formbold-textarea {
   display: flex;
   flex-direction: column-reverse;
@@ -184,6 +153,127 @@ form h1 {
 
 
 
-/*  */
+/* PAGE ALL PROSPECTS  */
 
 
+.prospectContainer {
+  margin-top: 90px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.prospects {
+margin: 0 auto;
+max-width: 350px;
+text-align: center;
+background-color: #fff;
+margin-top: 20px;
+padding: 20px;
+opacity: 0.8;
+margin: 20px;
+font-size: 15px;
+border: 2px solid #AB946B;
+box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;}
+
+.prospects h1, .prospects h2 {
+  margin-bottom: 20px;
+}
+
+.prospects p {
+  font-weight: 100;
+}
+
+.prospectContainer .btn {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border-radius: 20px;
+    box-shadow: 10px 15px 40px #36486b;
+    width: 200px;
+    height: 50px;
+    color: #bccad6;
+    border: none;
+    cursor: pointer;
+  }
+
+  .prospectContainer button:hover, .linksContact button:hover {
+      border: none;
+      background-color: #6A64F1;
+      opacity: 1;
+      color: #fff;
+  }
+
+  .btn:hover {
+    transition: 0.5s ease-in-out;
+    background: #6A64F1;
+  }
+
+  .prospectContainer .btn {
+    --color1: #36486b;
+    --color2: #bccad6;
+    text-align: center;
+    font-size: 15px;
+    background: repeating-linear-gradient(
+      45deg,
+      var(--color1),
+      var(--color1) 30px,
+      var(--color2) 30px,
+      var(--color2) 60px
+    );
+    background-clip: text;
+    color: transparent;
+    -webkit-background-clip: text;
+    animation: 40s linear 0s infinite move;
+  }
+
+
+  @keyframes move {
+    from {
+      background-position: 0px;
+    }
+  
+    to {
+      background-position: 1000px;
+    }
+  }
+
+  .linksContact {
+    margin-top: 30px;
+  }
+
+  .linksContact a, .linksContact button {
+    background-color: #6A64F1;
+    border: 0;
+    border-radius: 56px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: system-ui,-apple-system,system-ui,"Segoe UI",Roboto,Ubuntu,"Helvetica Neue",sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    outline: 0;
+    padding: 16px 21px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: all .3s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+
+  /*************************** DETAIL CONTAINER *************************************/
+
+
+  .detailContainer {
+    background-color: #fff;
+    text-align: center;
+    margin: 0 auto;
+    padding: 50px;
+    width: 50%;
+    margin-top: 18%;
+    border: 2px solid black;
+  }
+  

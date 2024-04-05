@@ -55,32 +55,51 @@ class ProspectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
+    public function show($id) {
+
+        $prospect = Prospect::findOrFail($id);
+    
+        return view('prospects.show', [
+            'prospect' => $prospect,
+        ]);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
+    public function edit($id) {
+
+        $prospect = Prospect::findOrFail($id);
+    
+        return view('prospects.edit', [
+            'prospect' => $prospect,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+    public function update(Request $request, $id) {
+
+        $validated = $request->validate([
+            'nom' => 'required|string|min:2|max:50',
+            'prenom' => 'required|string|min:2|max:50',
+            'email' => 'required|email|max:255', 
+            'telephone' => 'required|string|max:20',
+            'date_naissance' => 'required|date',
+            'besoin' => 'required|string',
+        ]);
+
+        $prospect = Prospect::findOrFail($id);
+        $prospect->update($validated);
+    
+        return view('prospects.updateconfirmation')->with('message', 'Le prospect a été modifié avec succès 😉');
+    
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+    public function delete($id) {
+        $prospect = Prospect::findOrFail($id);
+        $prospect->delete();
+    
+        return view('prospects.deleteconfirmation')->with('message', 'Le prospect a bien été supprimé.');
+
+     }
+     
     }
-}

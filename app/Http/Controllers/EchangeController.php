@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use App\Models\Echange;
+use App\Models\Prospect;
+
 
 class EchangeController extends Controller
 {
@@ -19,7 +23,7 @@ class EchangeController extends Controller
      */
     public function create()
     {
-        //
+     return view('echanges.create'); 
     }
 
     /**
@@ -27,7 +31,31 @@ class EchangeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'prospect_id' => 'required|exists:prospects,id',
+            'date' => 'required|date',
+            'heure' => 'required|date_format:H:i',
+            'contenu' => 'required|string',
+            'type' => 'required|in:telephone,email,echange_direct,courrier',
+        ]);
+
+        try {
+            $prospect = Prospect::findOrFail($request->input('prospect_id'));
+        } catch (ModelNotFoundException $e) {
+            // Redirection avec un message d'erreur si l'ID du prospect n'existe pas
+            return redirect()->back()->with('error', 'Prospect non trouvé');
+        }
+
+        $echange = new Echange();
+        $echange->prospect_id = $request->input('prospect_id');
+        $echange->date = $request->input('date');
+        $echange->heure = $request->input('heure');
+        $echange->contenu = $request->input('contenu');
+        $echange->type = $request->input('type');
+        $echange->save();
+
+        // Redirection avec un message de succès
+        return redirect()->route('echanges.confirmation')->with('success', 'Echange créé avec succès!');
     }
 
     /**
