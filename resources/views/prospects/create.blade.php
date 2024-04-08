@@ -67,6 +67,7 @@
                     @endif
                 </div>
                 <input type="submit" class="formbold-btn" value="Ajouter le prospect">
+                <a  class="formbold-btn" href="{{ route('prospects.index') }}">Voir les prospects</a>
             </form>
         </div>
 @endsection

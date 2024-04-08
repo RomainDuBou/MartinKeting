@@ -17,7 +17,7 @@ return new class extends Migration
             $table->date('date');
             $table->time('heure');
             $table->text('contenu');
-            $table->enum('type', ['telephone', 'email', 'echange_direct', 'courrier']);
+            $table->enum('type', ['Telephone', 'Email', 'Echange_direct', 'Courrier']);
             $table->timestamps();            
         });
     }

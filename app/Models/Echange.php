@@ -11,4 +11,11 @@ class Echange extends Model
 
     protected $fillable = ['date', 'heure', 'contenu', 'type'];
 
+    public function prospect()
+{
+    return $this->belongsTo(Prospect::class, 'prospect_id');
 }
+
+}
+
+
