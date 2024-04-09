@@ -3,33 +3,51 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Client;
+use App\Models\Prospect;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
-        //
+            $clients = Client::all()->sortByDesc('created_at');
+    
+            return view('clients.index', [
+                'clients' => $clients,
+            ]); 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $prospectId = $request->input('id');
+
+        $prospect = Prospect::findOrFail($prospectId);
+
+        return view('clients.create', [
+            'prospect' => $prospect
+        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
-    }
 
+        $client = new Client();
+        $client->nom = $request->nom;
+        $client->prenom = $request->prenom;
+        $client->email = $request->email;
+        $client->telephone = $request->telephone;
+        $client->date_naissance = $request->date_naissance;
+        $client->adresse_postale = $request->adresse_postale; 
+        $client->delai_paiement_jour = $request->delai_paiement_jour; 
+        $client->prospect_id = $request->prospect_id; 
+        $client->save();
+
+        $prospect = Prospect::findOrFail($request->prospect_id);
+        // $prospect->delete();
+
+        return view('clients.confirmation')->with('message', 'Le prospect a été converti en client avec succès.')->with('client', $client)->with('prospect', $prospect);
+    }
     /**
      * Display the specified resource.
      */
@@ -54,11 +72,11 @@ class ClientController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+    public function delete($id) {
+        $client = Client::findOrFail($id);
+        $client->delete();
+
+        return view('clients.deleteconfirmation')->with('message', 'Le client a bien été supprimé.');
+
+     }
 }

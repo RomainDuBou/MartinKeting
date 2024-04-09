@@ -11,7 +11,7 @@
 <body>
     <nav class="navMenu">
         <a href="{{ route('prospects.index') }}">Prospects</a>
-        <a href="#">Clients</a>
+        <a href="{{route('clients.index')}}">Clients</a>
         <a href="#">Ventes</a>
       </nav>
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EchangeController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProspectController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,16 @@ Route::get('/echanges/{id}', [EchangeController::class, 'show'])->name('echanges
 Route::get('/echanges/{id}/edit', [EchangeController::class, 'edit'])->name('echanges.edit');
 Route::put('/echanges/{id}', [EchangeController::class, 'update'])->name('echanges.update');
 Route::delete('/echanges/{id}', [EchangeController::class, 'delete'])->name('echanges.delete');
+
+// CLIENTS
+
+Route::get('/clients', [ClientController::class, 'index'])->name('clients.index'); 
+
+Route::get('/clients/create', [ClientController::class, 'create'])->name('clients.create');
+Route::post('/clients', [ClientController::class, 'store'])->name('clients.store'); 
+Route::delete('/clients/{id}', [ClientController::class, 'delete'])->name('clients.delete');
+
+
 
 
 

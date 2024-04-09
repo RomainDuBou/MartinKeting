@@ -32,13 +32,9 @@
                         <td>{{ $prospect->email }}</td>
                         <td>{{ $prospect->telephone }}</td>
                         <td>{{ $prospect->date_naissance }}</td>
-                        <td>
+                        <td class="tdLinks">
                             <a href="{{ route('prospects.show', ['id' => $prospect->id]) }}">Voir plus</a>
-                            <form method="POST" action="{{ route('prospects.delete', ['id' => $prospect->id]) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="formButton" type="submit">Supprimer</button>
-                            </form>
+                            <a href="{{ route('clients.create', ['id' => $prospect->id]) }}">Convertir en client</a>
                         </td>
                     </tr>
                 @endforeach
