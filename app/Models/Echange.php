@@ -9,6 +9,10 @@ class Echange extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['date', 'heure', 'contenu', 'type'];
-
+    protected $fillable = [
+        'date',
+        'heure',
+        'contenu',
+        'type',
+    ];
 }

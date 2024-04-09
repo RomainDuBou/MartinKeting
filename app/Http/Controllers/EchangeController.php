@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Echange;
 use Illuminate\Http\Request;
 
 class EchangeController extends Controller
@@ -11,7 +12,8 @@ class EchangeController extends Controller
      */
     public function index()
     {
-        //
+        $echanges = Echange::all();
+        return view('echanges.index', compact('echanges'));
     }
 
     /**
@@ -19,7 +21,7 @@ class EchangeController extends Controller
      */
     public function create()
     {
-        //
+        return view('echanges.create');
     }
 
     /**
@@ -27,38 +29,42 @@ class EchangeController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+        $request->validate([
+            'date' => 'required|date',
+            'heure' => 'required',
+            'type_communication' => 'required',
+            'contenu' => 'required',
+        ]);
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        Echange::create($request->all());
+
+        return redirect()->route('echanges.index')->with('success', 'Échange créé avec succès.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $echange = Echange::findOrFail($id);
+        return view('echanges.edit', compact('echange'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, $id)
     {
-        //
-    }
+        $request->validate([
+            'date' => 'required|date',
+            'heure' => 'required',
+            'type_communication' => 'required',
+            'contenu' => 'required',
+        ]);
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $echange = Echange::findOrFail($id);
+        $echange->update($request->all());
+
+        return redirect()->route('echanges.index')->with('success', 'Échange mis à jour avec succès.');
     }
 }

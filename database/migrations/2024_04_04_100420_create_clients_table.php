@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prospect_id')->references('id')->on('prospects');
-            $table->text('adresse_postale');
+            $table->foreignId('prospect_id')->nullable()->references('id')->on('prospects');
+            $table->text('adresse_postale')->nullable();
             $table->tinyInteger('delai_paiement_jour')->default(30)->unsigned()->comment('Maximum 30 jours');
             $table->timestamps();
         });

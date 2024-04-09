@@ -13,7 +13,10 @@ class ProspectController extends Controller
      */
     public function index()
     {
-        return view('prospects.create');
+        //return view('prospects.create');
+        //***************************** */
+        $prospects = Prospect::all();
+        return view('prospects.index', compact('prospects'));
     }
 
     /**
@@ -21,25 +24,7 @@ class ProspectController extends Controller
      */
     public function create(Request $request)
     {
-        $validated = $request->validate([
-            'nom' => 'required|string|min:2|max:50',
-            'prenom' => 'required|string|min:2|max:50',
-            'email' => 'required|email|max:255', 
-            'telephone' => 'required|string|max:20',
-            'date_naissance' => 'required|date',
-            'besoin' => 'required|string',
-        ]);
-    
-        $prospect = Prospect::create($validated);
-    
-        return view('prospect.confirmation', [
-            'nom' => $validated['nom'],
-            'prenom' => $validated['prenom'],
-            'email' => $validated['email'],
-            'telephone' => $validated['telephone'],
-            'date_naissance' => $validated['date_naissance'],
-            'besoin' => $validated['besoin'],
-        ]);
+        return view('prospects.create');
     }
 
     /**
@@ -47,6 +32,25 @@ class ProspectController extends Controller
      */
     public function store(Request $request)
     {
+        $validated = $request->validate([
+            'nom' => 'required|string|min:2|max:50',
+            'prenom' => 'required|string|min:2|max:50',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|string|max:20',
+            'date_naissance' => 'required|date',
+            'besoin' => 'required|string',
+        ]);
+
+        $prospect = Prospect::create($validated);
+
+        return view('prospects.confirmation', [
+            'nom' => $validated['nom'],
+            'prenom' => $validated['prenom'],
+            'email' => $validated['email'],
+            'telephone' => $validated['telephone'],
+            'date_naissance' => $validated['date_naissance'],
+            'besoin' => $validated['besoin'],
+        ]);
         //
     }
 
@@ -55,7 +59,9 @@ class ProspectController extends Controller
      */
     public function show(string $id)
     {
-        //
+        //******************* */
+        $prospect = Prospect::findOrFail($id);
+        return view('prospects.show', ['prospect' => $prospect]);
     }
 
     /**
@@ -63,7 +69,9 @@ class ProspectController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //***************************** */
+        $prospect = Prospect::findOrFail($id);
+        return view('prospects.edit', ['prospect' => $prospect]);
     }
 
     /**
@@ -71,7 +79,20 @@ class ProspectController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //**************************** */
+        $validated = $request->validate([
+            'nom' => 'required|string|min:2|max:50',
+            'prenom' => 'required|string|min:2|max:50',
+            'email' => 'required|email|max:255',
+            'telephone' => 'required|string|max:20',
+            'date_naissance' => 'required|date',
+            'besoin' => 'required|string',
+        ]);
+
+        $prospect = Prospect::findOrFail($id);
+        $prospect->update($validated);
+
+        return redirect()->route('prospects.index')->with('success', 'Prospect mis à jour avec succès.');
     }
 
     /**
@@ -79,6 +100,9 @@ class ProspectController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        //************************ */
+        $prospect = Prospect::findOrFail($id);
+        $prospect->delete();
+        return redirect()->route('prospects.index')->with('success', 'Prospect supprimé avec succès.');
     }
 }
