@@ -2,17 +2,22 @@
 
 @section('title', 'Prospects')
 
+@section('prospects-active', 'active')
+
+
 @section('content')
     <section class="prospectSection">
         <div class="titreLink">
-            <h1>Liste des prospects</h1>
-            <a href="{{ route('prospects.create') }}">
-                <button type="submit" class="formbold-btn">Ajouter un prospect</button>
-            </a>
-            <a href="{{ route('echanges.index') }}">
-                <button type="submit" class="formbold-btn">Voir les échanges</button>
-            </a>
+            <h1>LISTE DES PROSPECTS</h1>
+            <div class="linksProspect">
+            <a href="{{ route('prospects.create') }}" class="formbold-btn">Ajouter un prospect</a>
+            <a href="{{ route('echanges.index') }}" class="formbold-btn">Voir les échanges</a>
+            </div>
         </div>
+         <!-- Barre de recherche -->
+       <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher un prospect par son nom, prénom ou e-mail">
+    </div>
         <div class="prospectContainer">
             <table>
                 <tr>
@@ -25,7 +30,7 @@
                     <th>Actions</th>
                 </tr>
                 @foreach ($prospects as $prospect)
-                    <tr>
+                    <tr class="prospectRow">
                         <td>{{ $prospect->id }}</td>
                         <td>{{ $prospect->prenom }}</td>
                         <td>{{ $prospect->nom }}</td>
@@ -41,4 +46,35 @@
             </table>
         </div>
     </section>
+
+    <script>
+        // Fonction pour filtrer les clients
+        function filterProspect() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.querySelector("table");
+            tr = table.querySelectorAll(".prospectRow");
+
+            // Parcourir toutes les lignes et masquer celles qui ne correspondent pas à la recherche
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td");
+                for (var j = 1; j < td.length - 1; j++) { // Ignorer la colonne d'action
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = "";
+                            break;
+                        } else {
+                            tr[i].style.display = "none";
+                        }
+                    }
+                }
+            }
+        }
+
+        // Détecter les modifications dans le champ de recherche
+        document.getElementById("searchInput").addEventListener("keyup", filterProspect);
+
+    </script>
 @endsection

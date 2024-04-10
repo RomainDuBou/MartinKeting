@@ -10,10 +10,14 @@
 
 <body>
     <nav class="navMenu">
-        <a href="{{ route('prospects.index') }}">Prospects</a>
-        <a href="{{route('clients.index')}}">Clients</a>
-        <a href="#">Ventes</a>
-      </nav>
+        <a href="{{ route('prospects.index') }}" class="@yield('prospects-active')">Prospects</a>
+        <a href="{{ route('clients.index') }}" class="@yield('clients-active')">Clients</a>
+        <a href="{{ route('ventes.index') }}" class="@yield('ventes-active')">Ventes</a>
+        <form action="{{ route('auth.logout') }}" method="POST">
+            @csrf
+            <button type="submit">Déconnexion</button>
+        </form>
+    </nav>
 
     @yield('content')
 </body>

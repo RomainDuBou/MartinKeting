@@ -12,7 +12,9 @@ body {
     font-family: "Montserrat", sans-serif;
 }
 
-
+a {
+    text-decoration: none;
+}
 
 .navMenu {
     position: fixed;
@@ -43,6 +45,37 @@ body {
     color: #6a64f1;
 }
 
+.navMenu a.active {
+    width: 140px;
+    padding: 6px;
+    border-radius: 10px;
+    background-color:  #6a64f1; /* Couleur de fond différente pour la page active */
+    color: #fff; /* Couleur du texte différente pour la page active */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+/* Style de la barre de recherche */
+.search-container {
+    margin-top: 20px; /* Espacement du haut */
+    margin-bottom: 20px; /* Espacement du bas */
+    margin-left: 30px;
+}
+
+.search-container input[type=text] {
+    width: 300px; /* Largeur de la barre de recherche */
+    padding: 10px; /* Espacement intérieur */
+    border: 1px solid #ccc; /* Bordure */
+    border-radius: 5px; /* Bordure arrondie */
+    outline: none; /* Supprimer la bordure de focus */
+}
+
+.search-container input[type=text]:focus {
+    border-color: #6a64f1; /* Couleur de la bordure lorsqu'elle est en focus */
+}
+
+.search-container input[type=text]::placeholder {
+    color: #aaa; /* Couleur du texte de l'attribut placeholder */
+}
 /******************************* FORM PROSPECT  ****************************************/
 
 .formbold-form-wrapper {
@@ -124,6 +157,9 @@ form h1 {
 }
 .formbold-btn:hover {
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+    border: 2px solid #6a64f1;
+    color: #6a64f1;
 }
 
 /************ PAGE CONFIRMATION *************************/
@@ -159,6 +195,13 @@ form h1 {
   margin-left: 30px;
 }
 
+.titreLink a {
+    margin-top: 30px;
+}
+
+.linksProspect {
+    margin-top: 30px;
+}
 .prospectContainer {
   margin-top: 50px;
   overflow-x: auto; /* Ajout pour la barre de défilement horizontale si nécessaire */
@@ -174,6 +217,8 @@ form h1 {
   padding: 8px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  text-align: center;
+
 }
 
 .prospectContainer th {
@@ -322,6 +367,30 @@ form h1 {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.echangeLinks {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.btnStyle, .formbold-btn2 {
+    font-size: 16px;
+    border-radius: 5px;
+    padding: 9px;
+    border: 2px solid #6a64f1;
+    font-weight: 500;
+    background-color: #fff;
+    color: #6a64f1;
+    cursor: pointer;
+}
+
+.btnStyle:hover, .formbold-btn2:hover {
+    background-color: #6a64f1;
+    color: #fff;
+}
+
+
 
 
 /*************************** FORM  *************************************/

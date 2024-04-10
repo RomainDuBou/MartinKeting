@@ -15,4 +15,5 @@ class Prospect extends Model
     {
         return $this->hasMany(Echange::class);
     }
+
 }

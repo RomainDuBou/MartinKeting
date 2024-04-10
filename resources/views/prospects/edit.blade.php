@@ -2,6 +2,9 @@
 
 @section('title', 'Prospect')
 
+@section('prospects-active', 'active')
+
+
 @section('content')
         <div class="formbold-form-wrapper">
             <form action="{{ route('prospects.update', ['id' => $prospect->id]) }}" method="POST">

@@ -27,19 +27,23 @@
                             <p><strong>Heure de l'échange:</strong> {{ $echange->heure }}</p>
                             <p><strong>Type d'échange:</strong> {{ $echange->type }}</p>
                             <p><strong>Contenu:</strong> {{ $echange->contenu }}</p>
-                            <a class="" href="{{ route('echanges.edit', ['id' => $echange->id]) }}">Modifier</a>
-                            <form method="POST" action="{{ route('echanges.delete', ['id' => $echange->id]) }}">
-                                @csrf
-                                @method('DELETE')
-                                <button class="formButton" type="submit">Supprimer</button>
-                            </form>
+                            <div class="echangeLinks">
+                                <a class="formbold-btn2" href="{{ route('echanges.edit', ['id' => $echange->id]) }}">Modifier</a>
+                                <form method="POST" action="{{ route('echanges.delete', ['id' => $echange->id]) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btnStyle" type="submit">Supprimer</button>
+                                </form>
+                            </div>
                         </div>
                     @endforeach
                 @endif
             </div>
             <div class="links">
-                <a class="formbold-btn" href="{{ route('prospects.show', ['id' => $prospect->id]) }}">Retour à la fiche du prospect</a>
-                <a class="formbold-btn" href="{{ route('echanges.create', ['id' => $prospect->id]) }}">Créer un nouvel échange</a>
+                <a class="formbold-btn" href="{{ route('prospects.show', ['id' => $prospect->id]) }}">Retour à la fiche du
+                    prospect</a>
+                <a class="formbold-btn" href="{{ route('echanges.create', ['id' => $prospect->id]) }}">Créer un nouvel
+                    échange</a>
                 <a class="formbold-btn" href="{{ route('echanges.index') }}">Voir le tableau des échanges</a>
             </div>
         </div>

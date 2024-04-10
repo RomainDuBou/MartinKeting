@@ -10,4 +10,9 @@ class Vente extends Model
     use HasFactory;
 
     protected $fillable = ['client_id', 'titre', 'description', 'date', 'montant_HT', 'TVA',];
+
+     public function client()
+     {
+         return $this->belongsTo(Client::class);
+     }
 }

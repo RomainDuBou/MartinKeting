@@ -8,9 +8,7 @@ use App\Models\Prospect;
 
 class ProspectController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
             $prospects = Prospect::all()->sortByDesc('created_at');

@@ -2,6 +2,8 @@
 
 @section('title', 'Détails')
 
+@section('prospects-active', 'active')
+
 @section('nav')
 
 @section('content')
@@ -19,11 +21,11 @@
         <div class="prospectLinks">
             <a class="formbold-btn" href="{{ route('echanges.show', ['id' => $prospect->id]) }}">Voir les échanges</a>
             <a class="formbold-btn" href="{{ route('prospects.edit', ['id' => $prospect->id]) }}">Modifier</a>
-            <form method="POST" action="{{ route('prospects.delete', ['id' => $prospect->id]) }}">
+            {{-- <form method="POST" action="{{ route('prospects.delete', ['id' => $prospect->id]) }}">
                 @csrf
                 @method('DELETE')
                 <button class="formbold-btn" type="submit">Supprimer</button>
-            </form>
+            </form> --}}
         </div>
     </div>
 @endsection

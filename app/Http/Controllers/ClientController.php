@@ -48,28 +48,45 @@ class ClientController extends Controller
 
         return view('clients.confirmation')->with('message', 'Le prospect a été converti en client avec succès.')->with('client', $client)->with('prospect', $prospect);
     }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+    
+   
+    public function show($id) {
+
+        $client = Client::findOrFail($id);
+    
+        return view('clients.show', [
+            'client' => $client,
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+    public function edit($id) {
+
+        $client = Client::findOrFail($id);
+    
+        return view('clients.edit', [
+            'client' => $client,
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
+ 
+    public function update(Request $request, $id) {
+        // Trouver le client à mettre à jour
+        $client = Client::findOrFail($id);
+        
+        // Mettre à jour les attributs du client avec les données du formulaire
+        $client->nom = $request->nom;
+        $client->prenom = $request->prenom;
+        $client->email = $request->email;
+        $client->telephone = $request->telephone;
+        $client->date_naissance = $request->date_naissance;
+        $client->adresse_postale = $request->adresse_postale;
+        $client->delai_paiement_jour = $request->delai_paiement_jour;
+    
+        // Enregistrer les modifications
+        $client->save();
+    
+        // Rediriger vers la vue de confirmation avec un message
+        return view('clients.updateconfirmation')->with('message', 'Les informations du client ont été mises à jour avec succès.')->with('client', $client);
     }
 
     public function delete($id) {

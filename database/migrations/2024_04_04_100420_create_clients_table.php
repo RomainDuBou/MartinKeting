@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prospect_id')->references('id')->on('prospects');
+            $table->foreignId('prospect_id')->references('id')->on('prospects')->onDelete('cascade');
             $table->string('nom');
             $table->string('prenom');
             $table->string('email');

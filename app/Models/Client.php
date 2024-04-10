@@ -11,4 +11,9 @@ class Client extends Model
 
     protected $fillable = ['adresse_postale', 'delai_paiement_jour'];
 
+    public function ventes()
+    {
+        return $this->hasMany(Vente::class);
+    }
+
 }
