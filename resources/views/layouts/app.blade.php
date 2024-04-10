@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>MartinKeting | @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('styles/style.css') }}"> 
+    @stack('styles')
 </head>
 
 <body>

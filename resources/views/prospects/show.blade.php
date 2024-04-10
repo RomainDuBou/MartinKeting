@@ -10,7 +10,7 @@
         <li><strong>Numéro de Téléphone :</strong> {{ $prospect->telephone }}</li>
         <li><strong>Date de Naissance :</strong> {{ $prospect->date_naissance }}</li>
         <li><strong>Besoin Exprimé :</strong> {{ $prospect->besoin_exprime }}</li>
-        <!-- Ajoutez d'autres informations si nécessaire -->
+        
     </ul>
 
     <a href="{{ route('prospects.index') }}">Retour à la liste des prospects</a>
