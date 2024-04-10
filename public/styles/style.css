@@ -54,6 +54,18 @@ a {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
+.deconnexionButton {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    padding: 10px;
+}
+
+.logoNav {
+    position: absolute;
+    width: 90px;
+    left: 10px;
+}
 /* Style de la barre de recherche */
 .search-container {
     margin-top: 20px; /* Espacement du haut */

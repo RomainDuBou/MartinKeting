@@ -10,12 +10,13 @@
 
 <body>
     <nav class="navMenu">
+        <img class="logoNav" src="{{asset('images/maRtinKeting.png')}}">
         <a href="{{ route('prospects.index') }}" class="@yield('prospects-active')">Prospects</a>
         <a href="{{ route('clients.index') }}" class="@yield('clients-active')">Clients</a>
         <a href="{{ route('ventes.index') }}" class="@yield('ventes-active')">Ventes</a>
         <form action="{{ route('auth.logout') }}" method="POST">
             @csrf
-            <button type="submit">Déconnexion</button>
+            <button class="deconnexionButton" type="submit">Déconnexion</button>
         </form>
     </nav>
 

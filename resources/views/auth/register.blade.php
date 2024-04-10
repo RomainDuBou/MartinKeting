@@ -29,8 +29,9 @@
         width: 350px;
         margin: 0 auto;
         padding: 60px 60px;
-        background: url(/images/whitey.jpg) no-repeat center center #505050;
-        background-size: cover;
+        background: url(/images/maRtinKeting.png) no-repeat #ffffff;
+        background-position: 13em 5px;
+        background-size: 10em;
         box-shadow: 0px 30px 60px -5px #000;
         border-radius: 30px;
         margin-top: 90px;
@@ -99,7 +100,7 @@
     input[type="password"] {
         font-family: 'Montserrat', sans-serif;
         color: black;
-        background-color: #ffffffd3;
+        background-color: #0000003a;
     
     }
 
@@ -198,6 +199,9 @@
         </ul>
     </div>
 @endif
+
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+
 
     <div class="login">
         <h2 class="active">S'inscrire</h2>

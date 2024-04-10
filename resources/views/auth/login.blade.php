@@ -29,8 +29,9 @@
         width: 350px;
         margin: 0 auto;
         padding: 60px 60px;
-        background: url(/images/whitey.jpg) no-repeat center center #505050;
-        background-size: cover;
+        background: url(/images/maRtinKeting.png) no-repeat #ffffff;
+        background-position: 17em 30px;
+        background-size: 10em;
         box-shadow: 0px 30px 60px -5px #000;
         border-radius: 30px;
         margin-top: 120px;
@@ -90,14 +91,14 @@
     }
 
     .inputContainer {
-        margin-top: -50px;
+        margin-top: -20px;
     }
 
     input[type="email"],
     input[type="password"] {
         font-family: 'Montserrat', sans-serif;
         color: black;
-        background-color: #ffffffd3;
+        background-color: #0000003a;
     
     }
 
@@ -142,7 +143,6 @@
         display: block;
         height: 39px;
         border-radius: 20px;
-        margin-top: 30px;
         transition: all 0.5s ease-in-out;
         border: none;
         text-transform: uppercase;
@@ -174,20 +174,34 @@
         color: rgba(255, 255, 255, 0.2);
         color: black
     }
+
+    .alert {
+        position: absolute;
+        background-color: #ffffff;
+        color: #6a64f1;
+        border-radius: 50px;
+        padding: 20px;
+        left: 70%;
+    }
+    
 </style>
 
 <body>
+
+    @if (session('error'))
+    <div class="alert alert-danger">
+        ❌ Erreur(s) :
+
+        {{ session('error') }}
+    </div>
+@endif
 
     <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
 
     <div class="login">
 
         <h2 class="active">Se connecter</h2>
-        @if (session('error'))
-            <div class="alert alert-danger">
-                {{ session('error') }}
-            </div>
-        @endif
+     
         <form action="{{ route('authenticate') }}" method="post">
             @csrf
             <div class="inputContainer">
